@@ -3,6 +3,7 @@
 $(function() {
 	var weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
 	var apiKey = "7144aed56f79b17729c466816622aa0f";
+	var quoteUrl = "http://api.forismatic.com/api/1.0/";
 
 	function getWeather(city, state){
 		city = $("#city").val().toLowerCase();
@@ -37,7 +38,33 @@ $(function() {
 		$("input:text").val("");
 	});
 
+	var quoteUrl = "http://api.forismatic.com/api/1.0/";
+
+	var pullQuote = $.ajax({
+      url: quoteUrl,
+      jsonp: "jsonp",
+      dataType: 'jsonp',
+      data: {
+      	method: "getQuote",
+      	lang: "en",
+      	format: "jsonp"
+      },
+      success: function(response) {
+       getQuote(response.quoteText, response.quoteAuthor);
+      },
+      error: function(response) {
+        console.log(JSON.stringify(response));
+      }
+    });
+
+    function getQuote(quote, author){
+    	$('#quote').html(quote + " - "+ author);
+    }
+
+	
+
 
 });
+
 
 
