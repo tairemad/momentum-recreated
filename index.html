@@ -7,58 +7,67 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body onload="displayTime()">
-<div class="container">
-<div class="row top-spacing">
-<div class="col-md-2"><p id="date"></p></div><div class="col-md-10 text-right"><p class="temp"></p></div>
-<div class="col-md-12 text-center btm-space"><h1 id="time"></h1></div>
-  <div class="col-md-12">
-  <div class="col-md-3"><p class="weather-header">Get the Weather</h3></div>
-  <div class="col-md-3">
-      <input type="text" class="form-control" id="city" placeholder="Enter your city...">
-       </div>
-       <div class="col-md-3">
-       <input type="text" class="form-control" id="state" placeholder="Enter your state...">
+  <div class="container">
+    <div class="row top-spacing">
+      <div class="col-xs-6 col-sm-6 col-md-2"><p id="date"></p></div><div class="col-xs-6 col-sm-6 col-md-10 text-right"><p class="temp"></p></div>
+      </div>
+      <div class="row">
+      <div class="col-md-12 text-center btm-space"><h1 id="time"></h1></div>
+      </div>
+      <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-2 rem-pad"><p class="weather-header">Get the Weather</h3></div>
+
+
+        <div class="col-md-3 rem-pad">
+          <input type="text" class="form-control" id="city" placeholder="Enter your city...">
         </div>
-        <button class="btn btn-default" id="btn" type="button"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Get Weather</button>
+        <div class="col-md-4 rem-pad">
+         <div class="input-group">
+           <input type="text" class="form-control" id="state" placeholder="Enter your state..."> 
+           <div class="input-group-btn">
+            <button class="btn btn-default" id="btn" type="button"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Get Weather</button>
+          </div>
+        </div>
+      </div>
 
-  </div><!-- /.col-lg-4 -->
-  <div class="col-md-12 top-spacing text-center"><h3><span class="weather"></span></h3></div>
-</div><!-- /.row -->
+    </div><!-- /.col-lg-4 -->
+    <div class="col-md-12 top-spacing text-center"><h3><span class="weather"></span></h3></div>
+  </div><!-- /.row -->
 
-<div class="row top-spacing">
-  <div class="col-md-12 text-center top-spacing">
-    <p id="quote"></p>
+  <div class="row top-spacing">
+    <div class="col-md-12 text-center top-spacing">
+      <p id="quote"></p>
+    </div>
   </div>
 </div>
-</div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <script src="main.js" type="text/javascript" charset="utf-8" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="main.js" type="text/javascript" charset="utf-8" async defer></script>
 
-  <script type="text/javascript">
-    function displayTime(){
-      var date = new Date();
-      var year = date.getFullYear();
-      var month = date.getMonth();
-      var monthsOfYear = ['January', 'February','March',' April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-      var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-      var todaysDate = date.getDate();
-      var todaysDay = date.getDay();
-      var hour = date.getHours();
-      var minutes = date.getMinutes();
-      var seconds = date.getSeconds();
+<script type="text/javascript">
+  function displayTime(){
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth();
+    var monthsOfYear = ['January', 'February','March',' April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var todaysDate = date.getDate();
+    var todaysDay = date.getDay();
+    var hour = date.getHours();
+    var minutes = date.getMinutes();
 
 
-      var currentTime = (hour > 12) ? (hour-12 + ':' + minutes ) : (hour + ':' + minutes );
+    var currentTime = (hour > 12) ? (hour-12 + ':' + minutes ) : (hour + ':' + minutes );
 
-      document.getElementById('time').innerHTML= currentTime ;
+    document.getElementById('time').innerHTML= currentTime ;
 
-      document.getElementById('date').innerHTML = days[todaysDay] + " <br>" + monthsOfYear[month] + " " + todaysDate + ", " + year; 
+    document.getElementById('date').innerHTML = days[todaysDay] + " <br>" + monthsOfYear[month] + " " + todaysDate + ", " + year; 
 
-      var time = setTimeout(displayTime, 500);
+    var time = setTimeout(displayTime, 500);
 
   }
-  </script>
+</script>
 
 
 
