@@ -58,7 +58,7 @@ $(function() {
     });
 
     function getQuote(quote, author){
-    	$('#quote').html(quote + " - "+ author);
+    	$('#quote').html('"'+ quote + '" - ' + author);
     }
 
 	
