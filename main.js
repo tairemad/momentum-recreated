@@ -22,7 +22,13 @@ $(function() {
 	function aOK(city, state, temp, desc, id){
 		var wrapper = $(".weather");
 		wrapper.empty();
-		wrapper.html(city + ', ' + state + ' is: ' + convertTo(temp) + '&deg;F and ' + desc + '<i class="owf owf-'+id+'"></i>' );
+		wrapper.html('The temperature today in: ' +city + ', ' + state + ' is: ' + convertTo(temp) + '&deg;F and ' + desc + '<i class="owf owf-'+id+'"></i>' );
+	}
+
+	function getTemp(temp, id){
+		var tempDiv = $('.temp');
+		tempDiv.empty();
+		tempDiv.html(convertDegrees(temp) + '&deg;F '+ '<i class="owf owf-'+id+'"></i>');
 	}
 
 	function notOK(){
@@ -33,10 +39,31 @@ $(function() {
 		return Math.round(k*(9/5)-459.67);
 	}
 
+	function convertDegrees(k){
+		return Math.round(k*(9/5)+32);
+	}
+
+	var openWeatherMap = 'http://api.openweathermap.org/data/2.5/weather'
+		if (window.navigator && window.navigator.geolocation) {
+		    window.navigator.geolocation.getCurrentPosition(function(position) {
+		        $.getJSON(openWeatherMap, {
+		            lat: position.coords.latitude,
+		            lon: position.coords.longitude,
+		            units: 'metric',
+		            APPID: apiKey
+		        }).done(function(data) {
+		        	getTemp(data.main.temp, data.weather[0].id);
+		            console.log(data);
+		        })
+		    })
+		}
+
+
 	$('#btn').on('click', function(e){
 		getWeather();
 		$("input:text").val("");
 	});
+
 
 	var quoteUrl = "http://api.forismatic.com/api/1.0/";
 
@@ -60,8 +87,6 @@ $(function() {
     function getQuote(quote, author){
     	$('#quote').html('"'+ quote + '" - ' + author);
     }
-
-	
 
 
 });

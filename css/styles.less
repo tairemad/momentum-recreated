@@ -1,5 +1,7 @@
 body { 
-  background: url('https://source.unsplash.com/collection/420324') no-repeat center center fixed; 
+  background: linear-gradient(
+                     rgba(20,20,20, .5), 
+                     rgba(20,20,20, .5)), url('https://source.unsplash.com/collection/420324') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -7,7 +9,11 @@ body {
   color: #fff;
 }
 
-#date, #quote, .weather-header{
+#date, .temp{
+	font-size: 16px;
+}
+
+#quote, .weather-header{
 	font-size: 20px;
 }
 
