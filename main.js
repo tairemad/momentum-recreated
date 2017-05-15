@@ -45,19 +45,38 @@ $(function() {
         return Math.round(k*(9/5)+32);
     }
 
+    function gify(search){
+        search = $('#gifSearch').val().toLowerCase().trim().replace(/ /g, "+");
+        console.log(search);
+        var gifDiv = $('#gifs');
+        gifDiv.empty();
+        $.ajax({
+            url: gifyUrl + search + '&limit=4'+ gifyAPI,
+            success: function(response){
+              response.data.forEach(function(x) {
+				  var giphyImages = x.images.fixed_height.url;
+				  console.log(giphyImages);
+                  var imageResults = $('<div class="col-md-3"><img src="'+giphyImages+'"></div>');
+                  imageResults.appendTo(gifDiv);
+                });
+            },
+            error: function () {
+                notOK();
+            }
+        });
+    }
 
-
-    var openWeatherMap = 'http://api.openweathermap.org/data/2.5/weather'
+    var geoWeather = 'http://api.openweathermap.org/data/2.5/weather'
     if (window.navigator && window.navigator.geolocation) {
         window.navigator.geolocation.getCurrentPosition(function(position) {
-            $.getJSON(openWeatherMap, {
+            $.getJSON(geoWeather, {
                 lat: position.coords.latitude,
                 lon: position.coords.longitude,
                 units: 'metric',
                 APPID: apiKey
             }).done(function(data) {
                 getTemp(data.main.temp, data.weather[0].id);
-                console.log(data);
+                // console.log(data);
             })
         })
     }
