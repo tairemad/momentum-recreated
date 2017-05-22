@@ -117,6 +117,38 @@ $(function() {
     function getQuote(quote, author){
         $('#quote').html('"'+ quote + '" - ' + author);
     }
+	
+  (function displayTime(){
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth();
+        var monthsOfYear = ['January', 'February','March',' April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        var todaysDate = date.getDate();
+        var todaysDay = date.getDay();
+        var hour = date.getHours();
+        var minutes = date.getMinutes();
+
+        minutes = currentMinutes(minutes);
+
+
+        var currentTime = (hour > 12) ? (hour-12 + ':' + minutes ) : (hour + ':' + minutes );
+
+        document.getElementById('time').innerHTML= currentTime ;
+
+        document.getElementById('date').innerHTML = days[todaysDay] + " <br>" + monthsOfYear[month] + " " + todaysDate + ", " + year;
+
+        var time = setTimeout(displayTime, 500);
+
+        function currentMinutes(i){
+            if (i<10){
+                i = "0" + i;
+            }
+            return i;
+        }
+
+    })();
+
 
 
 });
