@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="css/owfont-regular.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body onload="displayTime()">
+<body>
   <div class="container">
     <div class="row top-spacing">
       <div class="col-xs-6 col-sm-6 col-md-2"><p id="date"></p></div><div class="col-xs-6 col-sm-6 col-md-10 text-right"><p class="temp"></p></div>
@@ -53,41 +53,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="main.js" type="text/javascript" charset="utf-8" async defer></script>
-
-<script type="text/javascript">
-    function displayTime(){
-        var date = new Date();
-        var year = date.getFullYear();
-        var month = date.getMonth();
-        var monthsOfYear = ['January', 'February','March',' April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        var todaysDate = date.getDate();
-        var todaysDay = date.getDay();
-        var hour = date.getHours();
-        var minutes = date.getMinutes();
-
-        minutes = currentMinutes(minutes);
-
-
-        var currentTime = (hour > 12) ? (hour-12 + ':' + minutes ) : (hour + ':' + minutes );
-
-        document.getElementById('time').innerHTML= currentTime ;
-
-        document.getElementById('date').innerHTML = days[todaysDay] + " <br>" + monthsOfYear[month] + " " + todaysDate + ", " + year;
-
-        var time = setTimeout(displayTime, 500);
-
-        function currentMinutes(i){
-            if (i<10){
-                i = "0" + i;
-            }
-            return i;
-        }
-
-    }
-</script>
-
-
 
 </body>
 </html>
