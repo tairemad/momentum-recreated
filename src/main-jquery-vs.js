@@ -1,4 +1,4 @@
-
+//jquery version on the code
 
 $(function() {
     var weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
@@ -53,11 +53,11 @@ $(function() {
         $.ajax({
             url: gifyUrl + search + '&limit=4'+ gifyAPI,
             success: function(response){
-              response.data.forEach(function(x) {
-				  var giphyImages = x.images.fixed_height.url;
-				  console.log(giphyImages);
-                  var imageResults = $('<div class="col-md-3"><img src="'+giphyImages+'"></div>');
-                  imageResults.appendTo(gifDiv);
+                response.data.forEach(function(x) {
+                    var giphyImages = x.images.fixed_height.url;
+                    console.log(giphyImages);
+                    var imageResults = $('<div class="col-md-3"><img src="'+giphyImages+'"></div>');
+                    imageResults.appendTo(gifDiv);
                 });
             },
             error: function () {
@@ -117,8 +117,8 @@ $(function() {
     function getQuote(quote, author){
         $('#quote').html('"'+ quote + '" - ' + author);
     }
-	
-  (function displayTime(){
+
+    (function displayTime(){
         var date = new Date();
         var year = date.getFullYear();
         var month = date.getMonth();
@@ -152,6 +152,5 @@ $(function() {
 
 
 });
-
 
 

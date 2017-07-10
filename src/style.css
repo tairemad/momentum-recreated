@@ -34,3 +34,9 @@ body {
 .rem-pad {
   padding: 0;
 }
+#gifs{
+  overflow-x: hidden;
+}
+#gifs img{
+  max-width: 270px;
+}
